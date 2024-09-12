@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="Robust Single Object Tracking and Pedestrian Following by Fusion Strategy">
+  <meta property="og:title" content="Robust Single Object Tracking and Following by Fusion Strategy"/>
+  <meta property="og:description" content="Robust Single Object Tracking and Pedestrian Following by Fusion Strategy"/>
+  <meta property="og:url" content="https://aurova-projects.github.io/tracker_fusion/"/>
+  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+  <meta property="og:image" content="static/images/EKFdiagramICINCO.png" />
+  <meta property="og:image:width" content="856"/>
+  <meta property="og:image:height" content="515"/>
+
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="Target Tracking, Autonomous Vehicles, Robot Sensing Systems, Real-Time Systems">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Robust Single Object Tracking and Following by Fusion Strategy</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <header class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <a href="https://aurova-projects.github.io/"><img src="static/images/logoAUROVA.png" alt="Logo AUROVA" class="left"  width="20%"/></a>
+        <img src="static/images/logo-ua.png" alt="Logo UA" class="right"  width="25%"/>
+      </div>  
+    </div>
+    <div class="hline"></div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Robust Single Object Tracking and Following by Fusion Strategy</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                Alejandro Olivas,
+              </span>
+              <span class="author-block">
+                Miguel Ángel Muñoz-Bañón,
+              </span>
+              <span class="author-block">
+                Edison Velasco,
+              </span>
+              <span class="author-block">
+                Fernando Torres
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Group of Automation, Robotics and Computer Vision (AUROVA)<br>University of Alicante</span>
+            </div>
+
+            <div class="is-size-8 publication-authors">
+              <span class="author-block"><a href="mailto:alejandro.olivas@ua.es" target="_blank">alejandro.olivas@ua.es</a></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                    <!-- Paper link -->
+                <span class="link-block">
+                  <a href="https://rua.ua.es/dspace/bitstream/10045/138863/1/Olivas_etal_ICINCO-2023.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+            <!-- Github link -->
+            <span class="link-block">
+              <a href="https://github.com/AUROVA-LAB/applications/tree/main/app_tracker_fusion" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%">
+        <source src="static/videos/banner_video.mp4"
+        type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+      </h2>
+    </div>
+  </div>
+</section> -->
+<!-- End teaser video -->
+
+<!-- Video carousel -->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Examples</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <source src="static/videos/Follow1_alltrackers.gif"
+            type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <source src="static/videos/Follow2_alltrackers.gif"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End video carousel -->
+
+<!-- Youtube video -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- Paper video. -->
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            <!-- Youtube embed code here -->
+            <iframe src="https://www.youtube.com/embed/n7d_BEgYg2k?si=oAVwz-0R4a1M0xAF" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End youtube video -->
+
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Single Object Tracking methods are yet not robust enough because they may lose the target due to occlusions or
+            changes in the target’s appearance, and it is difficult to detect automatically when they fail. To deal with these
+            problems, we design a novel method to improve object tracking by fusing complementary types of trackers,
+            taking advantage of each other’s strengths, with an Extended Kalman Filter to combine them in a probabilistic
+            way. The environment perception is performed with a 3D LiDAR sensor, so we can track the object in the point
+            cloud and also in the front-view image constructed from the point cloud. We use our tracker-fusion method in
+            a mobile robot to follow pedestrians, also considering the dynamic obstacles in the environment to avoid them.
+            We show that our method allows the robot to follow the target accurately during long experimental sessions
+            where the trackers independently fail, demonstrating the robustness of our tracker-fusion strategy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+        <img src="static/images/EKFdiagramICINCO.png" alt="Diagram Robust Single Object Tracking and Following by Fusion Strategy" class="center" width="50%"/>
+        <h2 class="subtitle has-text-centered">
+          Diagram of our tracker-fusion method.
+        </h2>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="gif-carousel" class="carousel results-carousel">
+        <div class="item">
+            <img src="static/videos/Follow1_alltrackers_compress.gif" alt="GIF pedestrian tracking" class="center" width="75%"/>
+        </div>
+        <div class="item">
+            <img src="static/videos/Follow2_alltrackers_compress.gif" alt="GIF pedestrian tracking" class="center" width="75%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper poster -->
+<!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+          </iframe>
+        
+      </div>
+    </div>
+  </section> -->
+<!--End paper poster -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@conference{olivas2023robust,
+  author={Alejandro Olivas. and Miguel Muñoz{-}Bañón. and Edison Velasco. and Fernando Torres.},
+  title={Robust Single Object Tracking and Following by Fusion Strategy},
+  booktitle={Proceedings of the 20th International Conference on Informatics in Control, Automation and Robotics - Volume 1: ICINCO},
+  year={2023},
+  pages={624-631},
+  publisher={SciTePress},
+  organization={INSTICC},
+  doi={10.5220/0012178900003543},
+  isbn={978-989-758-670-5},
+  issn={2184-2809},
+}
+    </code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
